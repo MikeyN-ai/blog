@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>
+            @yield('titulo')
+        </title>
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">
+        <script type="text/javascript" src="/js/app.js"></script>
+    </head>
+    <body>
+        @include('partials.nav')
+        @yield('contenido')
+    </body>
+</html>
