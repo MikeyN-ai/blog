@@ -8,6 +8,7 @@
     </head>
     <body>
         @include('partials.nav')
+        <p class="text-right pr-2">{{ fechaActual() }}</p>
         @yield('contenido')
     </body>
 </html>
