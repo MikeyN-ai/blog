@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Post;
+
 class PostController extends Controller
 {
     /**
@@ -11,7 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index');
+        $posts = Post::paginate(5);
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -36,7 +39,8 @@ class PostController extends Controller
     public function show(string $id)
     {
         if (is_numeric($id)) {
-            return view('posts.show', compact('id'));
+            $posts = Post::find($id);
+            return view('posts.show', compact('posts'));
         } else {
             return redirect()->route('posts.index');
         }
