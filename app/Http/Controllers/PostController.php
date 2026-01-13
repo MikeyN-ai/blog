@@ -79,14 +79,11 @@ class PostController extends Controller
 
     public function nuevoPrueba () {
 
-        /*$post = new Post();
+        $post = new Post();
         $post->titulo = "Titulo " . rand(100, 100000);
         $post->text = "Contenido " . rand(100000, 100000000);
         $post->save();
-        */
-        echo "ñalsdfj";
-
-        //return redirect()->route('posts.index');
+        return redirect()->route('posts.index');
     }
 
     public function editarPrueba (string $id) {

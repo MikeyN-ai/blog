@@ -19,11 +19,11 @@ Route::get('posts/{id}', function ($id) {
   ->where('id', "[0-9]+");
 */
 
-Route::resource('posts', PostController::class)
-->only(['index', 'show', 'create', 'edit', 'destroy']);
-
 Route::get('posts/nuevoPrueba', [PostController::class, 'nuevoPrueba'])
 ->name('posts.nuevoPrueba');
 
 Route::get('posts/editarPrueba/{id}', [PostController::class, 'editarPrueba'])
 ->name('posts.editarPrueba');
+
+Route::resource('posts', PostController::class)
+->only(['index', 'show', 'create', 'edit', 'destroy']);
