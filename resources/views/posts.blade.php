@@ -6,6 +6,6 @@
         <title>Document</title>
     </head>
     <body>
-        <p>Ficha del post {{ $id }}</p>
+        <p class="pl-4 pb-4">Ficha del post {{ $id }}</p>
     </body>
 </html>

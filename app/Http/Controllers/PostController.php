@@ -13,7 +13,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(5);
+        $posts = Post::orderBy('created_at', 'asc')->paginate(5);
         return view('posts.index', compact('posts'));
     }
 
@@ -72,6 +72,28 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Post::findOrFail($id)->delete();
+        return redirect()->route('posts.index');
+    }
+
+
+    public function nuevoPrueba () {
+
+        /*$post = new Post();
+        $post->titulo = "Titulo " . rand(100, 100000);
+        $post->text = "Contenido " . rand(100000, 100000000);
+        $post->save();
+        */
+        echo "ñalsdfj";
+
+        //return redirect()->route('posts.index');
+    }
+
+    public function editarPrueba (string $id) {
+        $postModificar = Post::findOrFail($id);
+        $postModificar->titulo = "Titulo " . rand(100, 100000);
+        $postModificar->text = "Contenido " . rand(100000, 100000000);
+        $postModificar->save();
+        return redirect()->route('posts.index');
     }
 }
