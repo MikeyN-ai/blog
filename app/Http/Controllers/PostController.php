@@ -78,10 +78,11 @@ class PostController extends Controller
 
 
     public function nuevoPrueba () {
-
+        $usuario = Usuario::findOrFail($usuario_id);
         $post = new Post();
         $post->titulo = "Titulo " . rand(100, 100000);
         $post->text = "Contenido " . rand(100000, 100000000);
+        $post->usuario()->associate($usuario);
         $post->save();
         return redirect()->route('posts.index');
     }
