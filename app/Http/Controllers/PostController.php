@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
+use App\Models\Usuario;
 
 class PostController extends Controller
 {
@@ -78,7 +79,8 @@ class PostController extends Controller
 
 
     public function nuevoPrueba () {
-        $usuario = Usuario::findOrFail($usuario_id);
+        $usuario = Usuario::findOrFail(rand(1, 3));
+        echo $usuario;
         $post = new Post();
         $post->titulo = "Titulo " . rand(100, 100000);
         $post->text = "Contenido " . rand(100000, 100000000);

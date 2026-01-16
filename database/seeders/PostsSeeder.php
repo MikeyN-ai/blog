@@ -1,0 +1,25 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use App\Models\Post;
+use App\Models\Usuario;
+
+
+class PostsSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $usuarios = Usuario::all();
+        $usuarios->each(function($usuario) {
+            Post::factory()->count(2)->create([
+                'usuario_id' => $usuario->id
+            ]);
+        });
+    }
+}
