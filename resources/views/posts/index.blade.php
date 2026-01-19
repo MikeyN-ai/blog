@@ -16,9 +16,9 @@
                     <form class="p-2 m-0" action="{{ route('posts.destroy', $post) }}" method="POST">
                         @method('DELETE')
                         @csrf
-                        <button class="btn btn-danger">Borrar</button>
+                        <button class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres borrar este post?');">Borrar</button>
                     </form>
-                    <a href="{{route('posts.editarPrueba', $post)}}" class="btn btn-warning">Editar</a>
+                    <a href="{{route('posts.edit', $post)}}" class="btn btn-warning">Editar</a>
                 </td>
             </tr>
         @empty
@@ -26,7 +26,7 @@
         @endforelse
     </table>
 
-    <a href="{{route('posts.nuevoPrueba')}}" class="btn btn-primary ml-4 mt-4">Añadir</a>
+    <a href="{{route('posts.create')}}" class="btn btn-primary ml-4 mt-4">Añadir</a>
 
     <div class="d-flex justify-content-center mt-4">
         {{ $posts->links('pagination::bootstrap-5') }}

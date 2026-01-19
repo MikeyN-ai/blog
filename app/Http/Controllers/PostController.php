@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 
 use App\Models\Post;
 use App\Models\Usuario;
@@ -23,15 +24,22 @@ class PostController extends Controller
      */
     public function create()
     {
-        return redirect()->route('posts.index');
+        $usuarios = Usuario::get();
+        return view('posts.create', compact('usuarios'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        $datos = $request->validated();
+        $post = new Post();
+        $post->titulo = $request->get('titulo');
+        $post->text = $request->get('text');
+        $post->usuario()->associate(Post::findOrFail(1));
+        $post->save();
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -52,20 +60,27 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        return redirect()->route('posts.index');
-        /*if (is_numeric($id)) {
-            return view('posts.edit', compact('id'));
+        if (is_numeric($id)) {
+            $post = Post::find($id);
+            return view('posts.edit', compact('post'));
         } else {
-            return view('posts.index');
-        }*/
+            return redirect()->route('posts.index');
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PostRequest $request, string $id)
     {
-        //
+        $datos = $request->validated();
+        
+        $post = Post::findOrFail($id);
+        $post->titulo = $request->get('titulo');
+        $post->text = $request->get('text');
+        $post->usuario()->associate(Post::findOrFail(1));
+        $post->save();
+        return redirect()->route('posts.index');
     }
 
     /**
