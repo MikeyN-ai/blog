@@ -37,7 +37,7 @@ class PostController extends Controller
         $post = new Post();
         $post->titulo = $request->get('titulo');
         $post->text = $request->get('text');
-        $post->usuario()->associate(Post::findOrFail(1));
+        $post->usuario()->associate(Usuario::findOrFail(1));
         $post->save();
         return redirect()->route('posts.index');
     }
@@ -74,11 +74,11 @@ class PostController extends Controller
     public function update(PostRequest $request, string $id)
     {
         $datos = $request->validated();
-        
+
         $post = Post::findOrFail($id);
         $post->titulo = $request->get('titulo');
         $post->text = $request->get('text');
-        $post->usuario()->associate(Post::findOrFail(1));
+        $post->usuario()->associate(Usuario::findOrFail(1));
         $post->save();
         return redirect()->route('posts.index');
     }
