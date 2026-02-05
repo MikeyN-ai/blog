@@ -25,5 +25,14 @@ Route::get('posts/nuevoPrueba', [PostController::class, 'nuevoPrueba'])
 Route::get('posts/editarPrueba/{id}', [PostController::class, 'editarPrueba'])
 ->name('posts.editarPrueba');
 
-Route::resource('posts', PostController::class)
-->only(['index', 'show', 'create', 'edit', 'destroy', 'store', 'update']);
+/*Route::resource('posts', PostController::class)
+->only(['index', 'show', 'create', 'edit', 'destroy', 'store', 'update']);*/
+
+Route::middleware(['auth'])->resource('libros', LibroController::class)
+->except(['index', 'show']);
+
+Route::resource('libros', LibroController::class)->only(['index', 'show']);
+
+
+Route::get('login', [LoginController::class, 'loginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);

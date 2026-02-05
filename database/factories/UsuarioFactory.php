@@ -23,9 +23,10 @@ class UsuarioFactory extends Factory
      */
     public function definition(): array
     {
+        $login = $this->faker->name;
         return [
-            'login' => $this->faker->name,
-            'password' => $this->faker->word
+            'login' => $login,
+            'password' => bcrypt($login)
         ];
 
         /*return [
@@ -36,6 +37,7 @@ class UsuarioFactory extends Factory
             'remember_token' => Str::random(10),
         ]; */
     }
+
 
     /**
      * Indicate that the model's email address should be unverified.

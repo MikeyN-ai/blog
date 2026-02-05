@@ -10,6 +10,13 @@ use App\Models\Usuario;
 
 class PostController extends Controller
 {
+
+    public function construct()
+    {
+        $this->middleware('auth',
+        ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      */
