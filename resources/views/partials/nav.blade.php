@@ -9,9 +9,6 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('posts.index')}}">Listado de posts</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
 
         @if(!auth()->check())
             <li class="nav-item">
