@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('inicio');
@@ -28,11 +29,13 @@ Route::get('posts/editarPrueba/{id}', [PostController::class, 'editarPrueba'])
 /*Route::resource('posts', PostController::class)
 ->only(['index', 'show', 'create', 'edit', 'destroy', 'store', 'update']);*/
 
-Route::middleware(['auth'])->resource('libros', LibroController::class)
+Route::middleware(['auth'])->resource('posts', PostController::class)
 ->except(['index', 'show']);
 
-Route::resource('libros', LibroController::class)->only(['index', 'show']);
+Route::resource('posts', PostController::class)->only(['index', 'show']);
 
 
 Route::get('login', [LoginController::class, 'loginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
+
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');

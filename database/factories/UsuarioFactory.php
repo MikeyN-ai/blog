@@ -26,7 +26,8 @@ class UsuarioFactory extends Factory
         $login = $this->faker->name;
         return [
             'login' => $login,
-            'password' => bcrypt($login)
+            'password' => bcrypt($login),
+            'rol' => "editor"
         ];
 
         /*return [

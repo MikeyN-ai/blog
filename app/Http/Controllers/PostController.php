@@ -67,12 +67,20 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        if (is_numeric($id)) {
-            $post = Post::find($id);
-            return view('posts.edit', compact('post'));
-        } else {
+        $post = Post::findOrFail($id);
+
+        // 1. Si no está logueado, al login
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
+
+        // 2. Si está logueado PERO no es el dueño (y no es admin)
+        if (auth()->user()->id !== $post->usuario_id) {
             return redirect()->route('posts.index');
         }
+
+        // 3. Si pasa los dos filtros anteriores, puede editar
+        return view('posts.edit', compact('post'));
     }
 
     /**

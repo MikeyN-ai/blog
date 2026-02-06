@@ -15,5 +15,10 @@ class UsuariosSeeder extends Seeder
     public function run(): void
     {
         Usuario::factory()->count(3)->create();
+        $admin = new Usuario();
+        $admin->login = "admin";
+        $admin->password =  bcrypt("admin");
+        $admin->rol = "admin";
+        $admin->save();
     }
 }

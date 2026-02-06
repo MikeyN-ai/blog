@@ -4453,12 +4453,22 @@ input[type=button].btn-block {
 .nav-link:hover,
 .nav-link:focus {
   text-decoration: none;
+  background-color: #1b4b72;
+  transform: translateY(-2px);
 }
 
 .nav-link.disabled {
   color: #6c757d;
   pointer-events: none;
   cursor: default;
+}
+
+.cerrar_sesion:hover {
+  background-color: rgb(106, 22, 22) !important;
+}
+
+.iniciar_sesion:hover {
+  background-color: rgb(51, 106, 22) !important;
 }
 
 .nav-tabs {

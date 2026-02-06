@@ -12,7 +12,6 @@ public function loginForm()
       return view('auth.login');
    }
 
-
    public function login(Request $request)
    {
        $credenciales = $request->only('login', 'password');
@@ -25,5 +24,11 @@ public function loginForm()
            return view('auth.login', compact('error'));
        }
    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->intended(route('posts.index'));
+    }
 
 }

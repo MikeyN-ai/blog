@@ -13,12 +13,17 @@
                 <td class="p-2">{{ $post->titulo }} ({{ $post->usuario->login }})</td>
                 <td class="p-2 d-flex align-items-center">
                     <a href="{{route('posts.show', $post)}}" class="btn btn-success">Ver</a>
-                    <form class="p-2 m-0" action="{{ route('posts.destroy', $post) }}" method="POST">
-                        @method('DELETE')
-                        @csrf
-                        <button class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres borrar este post?');">Borrar</button>
-                    </form>
-                    <a href="{{route('posts.edit', $post)}}" class="btn btn-warning">Editar</a>
+
+                    @if(auth()->check() && (auth()->user()->id === $post->usuario_id || auth()->user()->rol === "admin"))
+                        <form class="p-2 m-0" action="{{ route('posts.destroy', $post) }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres borrar este post?');">Borrar</button>
+                        </form>
+                    @endif
+                    @if(auth()->check() && (auth()->user()->id === $post->usuario_id || auth()->user()->rol === "admin"))
+                        <a href="{{route('posts.edit', $post)}}" class="btn btn-warning">Editar</a>
+                    @endif
                 </td>
             </tr>
         @empty
