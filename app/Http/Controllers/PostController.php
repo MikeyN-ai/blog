@@ -22,7 +22,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'asc')->paginate(5);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
         return view('posts.index', compact('posts'));
     }
 
@@ -93,7 +93,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->titulo = $request->get('titulo');
         $post->text = $request->get('text');
-        $post->usuario()->associate(Usuario::findOrFail(1));
+        $post->usuario()->associate(Usuario::findOrFail(auth()->user()->id));
         $post->save();
         return redirect()->route('posts.index');
     }
