@@ -24,7 +24,7 @@
                                     <button class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres borrar este post?');">Borrar</button>
                                 </form>
                             @endif
-                            @if(auth()->check() && (auth()->user()->id === $post->usuario_id || auth()->user()->rol === "admin"))
+                            @if(auth()->check() && (auth()->user()->id === $post->usuario_id))
                                 <a href="{{route('posts.edit', $post)}}" class="btn btn-warning">Editar</a>
                             @endif
                         </div>
