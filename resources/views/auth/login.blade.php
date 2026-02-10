@@ -9,18 +9,16 @@
     <div class="container-fluid px-4">
         <div class="row">
             <div class="col-12">
-                <h1>Login</h1>
+                <h1 class="mb-3">Login</h1>
 
                 @if (!empty($error))
-                    <div class="text-danger">
-                        {{ $error }}
+                    <div class="alert alert-danger" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill mr-2"></i>{{ $error }}
                     </div>
                 @endif
 
-
                 <form action="{{ route('login') }}" method="POST">
                     @csrf
-
 
                     <div class="form-group">
                         <label for="login">Login:</label>

@@ -74,12 +74,7 @@ class PostController extends Controller
             return redirect()->route('login');
         }
 
-        // 2. Si está logueado PERO no es el dueño (y no es admin)
-        if (auth()->user()->id !== $post->usuario_id) {
-            return redirect()->route('posts.index');
-        }
-
-        // 3. Si pasa los dos filtros anteriores, puede editar
+        // 2. Si pasa los dos filtros anteriores, puede editar
         return view('posts.edit', compact('post'));
     }
 

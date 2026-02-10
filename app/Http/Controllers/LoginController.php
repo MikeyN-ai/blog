@@ -20,7 +20,7 @@ public function loginForm()
            // Autenticación exitosa
            return redirect()->intended(route('posts.index'));
        } else {
-           $error = 'Usuario incorrecto';
+           $error = 'Credenciales incorrectas';
            return view('auth.login', compact('error'));
        }
    }
