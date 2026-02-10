@@ -16,17 +16,18 @@
                         <input type="text" class="form-control" name="titulo" id="titulo" value="{{ old('titulo') }}">
 
                         @if ($errors->has('titulo'))
-                            <p class="text-danger mb-2">
-                                {{ $errors->first('titulo') }}
+                            <p class="text-danger my-2">
+                               {{ $errors->first('titulo') }}
                             </p>
                         @endif
                     </div>
 
                     <div class="form-group">
                         <label for="text">Comentario:</label>
-                        <input type="text" class="form-control" name="text" id="text" value="{{ old('text') }}">
+                        <textarea class="form-control" id="text" name="text" rows="5">{{ old('text') }}</textarea>
+
                         @if ($errors->has('text'))
-                            <p class="text-danger mb-2">
+                            <p class="text-danger my-2">
                                 {{ $errors->first('text') }}
                             </p>
                         @endif

@@ -13,7 +13,7 @@
 
                 @if (!empty($error))
                     <div class="alert alert-danger" role="alert">
-                        <i class="bi bi-exclamation-triangle-fill mr-2"></i>{{ $error }}
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>{{ $error }}
                     </div>
                 @endif
 
